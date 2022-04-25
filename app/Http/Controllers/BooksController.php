@@ -69,9 +69,9 @@ class BooksController extends Controller
     {
         try {
             $book = Item::findOrFail($id);
-           if($book->item_type_id == 1){
-            $rented = Rentals::where('item_id',$book->id)->orderBy('created_at', 'DESC')->get();
-            if($rented[0]['status_id'] == 1){
+            if($book->item_type_id == 1){
+                $rented = Rentals::where('item_id',$book->id)->orderBy('created_at', 'DESC')->get();
+                if(count($rented) == 0 || $rented[0]['status_id'] == 1 ){
                 $book->delete();
                 return $this->successResponse('Deleted Successfully');
             }

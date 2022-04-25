@@ -70,7 +70,7 @@ class EquipmentController extends Controller
             $equipment = Item::findOrFail($id);
            if($equipment->item_type_id == 2){
             $rented = Rentals::where('item_id',$equipment->id)->orderBy('created_at', 'DESC')->get();
-            if($rented[0]['status_id'] == 1){
+            if(count($rented) == 0 || $rented[0]['status_id'] == 1 ){
                 $equipment->delete();
                 return $this->successResponse('Deleted Successfully');
             }
