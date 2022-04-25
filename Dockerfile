@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM php:8.0.5-fpm-alpine
 
 RUN apk --no-cache add \
 php8 \
@@ -16,7 +16,9 @@ php8-curl
 RUN apk --no-cache add \
 php8-phar \
 php8-xml \
-php8-xmlwriter
+php8-xmlwriter 
+
+RUN docker-php-ext-install mysqli pdo_mysql
 
 
 RUN php8 -r "copy('http://getcomposer.org/installer', 'composer-setup.php');" && \
