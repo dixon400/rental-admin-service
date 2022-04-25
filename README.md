@@ -18,3 +18,7 @@ https://dbdiagram.io/d/625ec5e31072ae0b6aac8e28
 - In terminal, exec into the pod with sh and run migration and seed 
 
 ** Docker exec -it [containerID] sh **
+
+# Run unit test for books and equipment endpoints
+
+- run this command: vendor/bin/phpunit
